@@ -10,12 +10,12 @@
   <img src="https://img.shields.io/badge/dependency-marked-yellow.svg?style=flat">
 </p>
 
-## Install
+### Install
 
 ```bash
 npm install --save vm-markdwon
 ```
-## Usage
+### Usage
 
 ```js
 import VmMarkdown from 'vm-markdwon'
@@ -44,6 +44,6 @@ export default {
 ```
 
 
-## License
+### License
 
 [MIT](https://github.com/luosijie/vm-editor/blob/master/LICENSE.md)
