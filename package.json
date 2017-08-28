@@ -1,7 +1,7 @@
 {
   "name": "vm-markdown",
   "description": "A Vue Markdown Editor",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Jesse Luo <luo_sj@163.com>",
   "private": false,
   "main": "./publish/vm_markdown.min.js",
@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "prebuild": "webpack --config webpack.prebuild.config.js"
+    "npmlize": "webpack --config webpack.npmlize.config.js"
   },
   "dependencies": {
     "marked": "^0.3.6",

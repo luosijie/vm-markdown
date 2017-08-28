@@ -44,14 +44,9 @@ module.exports = {
         test: /\.(woff|svg|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: './iconfont/[name].[ext]?[hash]'
         }
       }
     ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
   }
 }

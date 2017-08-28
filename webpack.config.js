@@ -10,11 +10,6 @@ module.exports = {
     filename: 'build.js'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
     new HtmlWebpackPlugin({
       template: __dirname + '/index.html',
       favicon: __dirname + '/static/favicon.ico'

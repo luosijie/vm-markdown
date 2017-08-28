@@ -17,6 +17,8 @@
   </div>
 </template>
 <style lang="scss">
+  @import url('../assets/iconfont/iconfont.css');
+  // @import url('//at.alicdn.com/t/font_395110_atvjh67aqsuzyqfr.css');
   .vm-markdown{
     background-color: white;
     border-radius: 4px;

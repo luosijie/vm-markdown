@@ -1,7 +1,6 @@
 <template>
   <div class="vm-editor-menu"
-       :style="{backgroundColor:bgMenu, color:menuColor, border:menuBorder}" 
-       v-hover:color="hoverColor">
+       :style="{backgroundColor:bgMenu, color:menuColor, border:menuBorder}">
     <div class="command">
       <VmMarkdownButton icon="iconfont icon-heading">
         <VmMarkdownDropdown>
@@ -134,21 +133,18 @@ export default {
       document.execCommand('insertText', false, string)
     }
   },
-  directives:{
-    hover: {
-      update: function (el,binding) {
-        el.addEventListener('mouseover', function (evt) {
-          if (evt.target.tagName == 'I') {
-            evt.target.style.color = binding.value
-          } 
-        })
-        el.addEventListener('mouseout', function (evt) {
-          if (evt.target.tagName == 'I') {
-            evt.target.style.color = ''
-          } 
-        })
-      }
-    }
+  mounted () {
+    let menu = document.querySelector('.vm-editor-menu')
+    menu.addEventListener('mouseover', evt => {
+      if (evt.target.tagName == 'I') {
+        evt.target.style.color = this.hoverColor
+      } 
+    })
+    menu.addEventListener('mouseout', function (evt) {
+      if (evt.target.tagName == 'I') {
+        evt.target.style.color = ''
+      } 
+    })
   }
 }
 </script>
