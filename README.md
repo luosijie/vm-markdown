@@ -1,18 +1,46 @@
-# vm-markdown
+<p align="center">
+  <img src="https://github.com/luosijie/Front-end-Blog/blob/master/img/logo_vmmarkdown_name.png?raw=true">
+  <p>
+    <strong>Markdown for Vue,</strong> <a href="https://luosijie.github.io/vm-editor/">Live Demo</a>
+  </p>
+  <img src="https://img.shields.io/badge/version-0.1.0-blue.svg?style=flat">
+  <img src="https://img.shields.io/badge/dependency-vue-green.svg?style=flat">
+  <img src="https://img.shields.io/badge/dependency-marked-yellow.svg?style=flat">
+</p>
 
-> A Vue Markdown Editor
+### Install
 
-## Build Setup
+```
+npm install --save vm-markdwon
+```
+### Usage
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+```
+import VmMarkdown from 'vm-markdwon'
+export default {
+  ...
+  components: {
+  	VmMarkdown
+  },
+  methods: {
+  	showHtml (data) {
+      console.log(data)
+    }
+  }
+  ...
+}
+```
+```
+<VmMarkdown :theme="theme" 
+            width="1000px" 
+            height="600px" 
+            v-on:getHtml="showHtml"
+            class="markdown"
+            :defaultText="intro">
+</VmMarkdown>
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+### License
+
+[MIT](https://github.com/luosijie/vm-editor/blob/master/LICENSE.md)
