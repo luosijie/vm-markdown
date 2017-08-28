@@ -12,12 +12,12 @@
 
 ## Install
 
-```
+```bash
 npm install --save vm-markdwon
 ```
 ## Usage
 
-```
+```js
 import VmMarkdown from 'vm-markdwon'
 export default {
   ...
@@ -32,7 +32,8 @@ export default {
   ...
 }
 ```
-```
+
+```vue
 <VmMarkdown :theme="theme" 
             width="1000px" 
             height="600px" 
