@@ -1,8 +1,8 @@
 let theme = {
 	default: {
-      menuColor: '#547495',
+      menuColor: '#6d96c1',
       menuBorder: '1px solid #35495e',
-      hoverColor: '#6b93bd',
+      hoverColor: '#88bcf1',
       bgMenu: '#35495e',
       bgLeft: '#f7f7f7',
       bgRight: '#ffffff'
