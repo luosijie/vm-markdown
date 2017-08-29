@@ -176,10 +176,11 @@ export default {
       let VmMarkdown = document.querySelector('.vm-markdown')
       let VmMarkdownEdit = document.querySelector('.vm-markdown-edit') 
       
-      let buttons = VmMarkdownLayout.querySelectorAll('i')
-      buttons.forEach(elem=>{
-        elem.addEventListener('click', evt => {
-          switch (elem.dataset.layout) {
+      let is = VmMarkdownLayout.querySelectorAll('i')
+      for(let i=0; i<is.length; i++){
+        is[i].addEventListener('click', evt => {
+          console.log(is[i])
+          switch (is[i].dataset.layout) {
             case 'default' :
               VmMarkdownEdit.style.width = '50%'
               break;
@@ -204,7 +205,7 @@ export default {
               break
           }
         })
-      })
+      }
     },
     parseHtml () {
       let style = {
