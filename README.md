@@ -25,8 +25,8 @@ export default {
   	VmMarkdown
   },
   methods: {
-  	showHtml (data) {
-      console.log(data)
+  	showHtml (html) {
+      // get html string here
     }
   }
   ...

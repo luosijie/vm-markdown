@@ -55,8 +55,8 @@ export default {
     }
   },
   methods: {
-    showHtml (data) {
-      console.log(data)
+    showHtml (html) {
+      // get html string here
     },
     selectTheme (evt) {
       if(evt.target.tagName === 'SPAN'){
