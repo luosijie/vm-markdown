@@ -1,6 +1,6 @@
 <template>
   <div class="vm-markdown" :style="{width: width, height:height}">
-    <VmMarkdownMenu :bgMenu="themeValue.bgMenu" 
+    <VmMarkdownMenu :bgMenu="themeValue.bgMenu"
                     :menuBorder="themeValue.menuBorder"
                     :menuColor="themeValue.menuColor"
                     :hoverColor="themeValue.hoverColor"
@@ -8,14 +8,14 @@
                   >
     </VmMarkdownMenu>
     <div class="content">
-      <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
+      <div class="vm-markdown-edit" contenteditable="true" :style="{backgroundColor: themeValue.bgLeft}">
         <textarea v-focus class="content-markdown" v-model="markdString"></textarea>
       </div>
       <div class="vm-markdown-html" v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}">
-        
+
       </div>
     </div>
-    
+
   </div>
 </template>
 <style lang="scss">
@@ -38,8 +38,8 @@
       font-size: 16px;
       border: 1px solid #eeeff1;
       border-top: none;
-      .vm-markdown-edit, .render{       
-        height: 100%;    
+      .vm-markdown-edit, .render{
+        height: 100%;
       }
       .vm-markdown-edit{
         width: 50%;
@@ -171,12 +171,12 @@ export default {
   methods: {
     layout: function (event) {
       let VmMarkdown = document.querySelector('.vm-markdown')
-      let VmMarkdownEdit = document.querySelector('.vm-markdown-edit')    
+      let VmMarkdownEdit = document.querySelector('.vm-markdown-edit')
       function classHas(str){
         return event.target.classList.contains(str)
       }
       if(classHas('icon-layout-zoom')){
-        
+
         if (VmMarkdown.style.position === 'fixed') {
           VmMarkdown.style = 'width:' + this.width + ';' +
                              'height:' + this.height + ';'
@@ -187,7 +187,7 @@ export default {
           VmMarkdown.style.margin = '0'
           VmMarkdown.style.width = '100%'
           VmMarkdown.style.height = '100%'
-        }   
+        }
       }else if (classHas('icon-layout-left')) {
         VmMarkdownEdit.style.width = '0'
       }else if (classHas('icon-layout-right')) {
