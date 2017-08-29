@@ -8,7 +8,7 @@
                   >
     </VmMarkdownMenu>
     <div class="content">
-      <div class="vm-markdown-edit" contenteditable="true" :style="{backgroundColor: themeValue.bgLeft}">
+      <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
         <textarea v-focus class="content-markdown" v-model="markdString"></textarea>
       </div>
       <div class="vm-markdown-html" v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}">

@@ -20,7 +20,6 @@
     display: flex;
     justify-content: center;
     color: inherit;
-    transform: scale(1.3);
     &:first-child{
       margin-left: 0;
     }
