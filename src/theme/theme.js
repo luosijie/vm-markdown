@@ -1,6 +1,6 @@
 let theme = {
 	default: {
-      menuColor: '#6d96c1',
+      menuColor: '#ffffff',
       menuBorder: '1px solid #35495e',
       hoverColor: '#88bcf1',
       bgMenu: '#35495e',
@@ -8,7 +8,7 @@ let theme = {
       bgRight: '#ffffff'
     },
     green: {
-      menuColor: '#50e2a1',
+      menuColor: '#ffffff',
       menuBorder: '1px solid #41b883',
       hoverColor: '#5affb6',
       bgMenu: '#41b883',
@@ -16,7 +16,7 @@ let theme = {
       bgRight: '#ffffff'
     },
 	gray: {
-      menuColor: '#858585',
+      menuColor: '#27292C',
       menuBorder: '1px solid #eeeff1',
       hoverColor: '#232323',
       bgMenu: '#fafbfc',
@@ -24,7 +24,7 @@ let theme = {
       bgRight: '#fff'
     },
     dark: {
-      menuColor: '#858585',
+      menuColor: '#ffffff',
       menuBorder: '1px solid #27292c',
       hoverColor: '#09bb07',
       bgMenu: '#27292c',
