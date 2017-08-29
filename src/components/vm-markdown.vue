@@ -179,7 +179,6 @@ export default {
       let is = VmMarkdownLayout.querySelectorAll('i')
       for(let i=0; i<is.length; i++){
         is[i].addEventListener('click', evt => {
-          console.log(is[i])
           switch (is[i].dataset.layout) {
             case 'default' :
               VmMarkdownEdit.style.width = '50%'
@@ -192,8 +191,14 @@ export default {
               break;
             case 'zoom' :
               if (VmMarkdown.style.position === 'fixed') {
-                VmMarkdown.style = 'width:' + this.width + ';' +
-                                   'height:' + this.height + ';'
+                VmMarkdown.style.cssText = 'width:' + this.width + ';' +
+                                           'height:' + this.height + ';'
+                // VmMarkdown.style.position = ''
+                // VmMarkdown.style.left = ''
+                // VmMarkdown.style.top = ''
+                // VmMarkdown.style.margin = ''
+                // VmMarkdown.style.width = this.width
+                // VmMarkdown.style.height = this.height
               }else{
                 VmMarkdown.style.position = 'fixed'
                 VmMarkdown.style.left = '0'
@@ -271,7 +276,7 @@ export default {
         let _tagNames = html.getElementsByTagName(tagNames[i])
         if (_tagNames.length > 0) {
           for (let j = 0; j < _tagNames.length; j++) {
-            _tagNames[j].style = style[tagNames[i]]
+            _tagNames[j].style.cssText = style[tagNames[i]]
           }
         }
       }
