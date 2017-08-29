@@ -24,7 +24,6 @@ export default {
             width="1000px" 
             height="600px" 
             v-on:getHtml="showHtml"
-            class="markdown"
             :defaultText="intro">
 </VmMarkdown>
 \`\`\`
