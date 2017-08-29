@@ -11,7 +11,9 @@
       <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
         <textarea v-focus class="content-markdown" v-model="markdString"></textarea>
       </div>
-      <div class="vm-markdown-html" v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}">s</div>
+      <div class="vm-markdown-html" v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}">
+        
+      </div>
     </div>
     
   </div>

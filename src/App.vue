@@ -22,7 +22,7 @@
       <span data-theme="gray"></span>
       <span data-theme="princess"></span>
     </div>
-    <h4>theme = "<span class="theme-type">dark</span>"</h4>
+    <h4>theme = "<span class="theme-type">default</span>"</h4>
     <VmMarkdown :theme="theme" 
                 width="1000px" 
                 height="800px" 

@@ -34,17 +34,10 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url-loader',
-        options: {
-          name: './images/[name].[ext]?[hash]'
-        }
-      },
-      {
         test: /\.(woff|svg|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          name: './iconfont/[name].[ext]?[hash]'
+          name: '[name].[ext]?[hash]'
         }
       }
     ]
