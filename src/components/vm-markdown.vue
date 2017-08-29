@@ -8,8 +8,8 @@
                   >
     </VmMarkdownMenu>
     <div class="content">
-      <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}" contenteditable="true">
-        <textarea v-focus class="vm-markdown-content" v-model="markdString"></textarea>
+      <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
+        <textarea class="vm-markdown-content" v-model="markdString"></textarea>
       </div>
       <div class="vm-markdown-html" v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}">
       </div>
@@ -176,7 +176,7 @@ export default {
       let VmMarkdown = document.querySelector('.vm-markdown')
       let VmMarkdownEdit = document.querySelector('.vm-markdown-edit') 
       
-      let buttons = VmMarkdownLayout.querySelectorAll('button')
+      let buttons = VmMarkdownLayout.querySelectorAll('i')
       buttons.forEach(elem=>{
         elem.addEventListener('click', evt => {
           switch (elem.dataset.layout) {
@@ -303,13 +303,6 @@ export default {
   mounted () {
     this.markdString = this.defaultText
     this.layoutControl()
-  },
-  directives: {
-    focus: {
-      inserted: function (el) {
-        el.focus()
-      }
-    }
   }
 }
 </script>

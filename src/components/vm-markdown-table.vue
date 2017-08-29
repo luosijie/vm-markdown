@@ -29,7 +29,7 @@
 </style>
 <script>
 import VmMarkdownDropdown from './vm-markdown-dropdown.vue'
-// import insertText from '../assets/js/insertText.js'
+import insertText from '../assets/js/insertText.js'
 export default {
   name: 'VmMarkdownTable',
   components: {
@@ -39,6 +39,13 @@ export default {
     hoverColor: {
       type: String,
       default: '#232323'
+    }
+  },
+  methods: {
+    insertText (string) {
+      let content = document.querySelector('.vm-markdown-content')
+      insertText(content, string)
+      this.$emit('textChange', content.value)
     }
   },
   computed: {
@@ -96,7 +103,7 @@ export default {
         ths += ' |\n'
         tls += ' |\n'
         str += ths + tls + tds
-        document.execCommand('insertText', false, str)
+        this.insertText(str)
       }
     })
   }

@@ -21,7 +21,7 @@
       position: absolute;
       left: 0;
       top: -15px;
-      // opacity: 0;
+      opacity: 0;
     }
   }
 </style>

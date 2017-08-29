@@ -5,7 +5,7 @@
     <strong>Markdown for Vue,</strong> <a href="https://luosijie.github.io/vm-markdown/">Live Demo</a>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.0-blue.svg?style=flat">
+  <img src="https://img.shields.io/badge/version-0.2.0-blue.svg?style=flat">
   <img src="https://img.shields.io/badge/dependency-vue-green.svg?style=flat">
   <img src="https://img.shields.io/badge/dependency-marked-yellow.svg?style=flat">
 </p>
