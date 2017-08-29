@@ -1,6 +1,7 @@
 <template>
     <div class="vm-markdown-dropdown">
       <slot></slot>
+      <span class="block"></span>
     </div>
 </template>
 <style lang="scss">
@@ -13,15 +14,14 @@
     border: 1px solid #eeeff1;
     box-shadow: 0 0 4px rgba(0,0,0,.05);
     z-index: 999;
-    &:before{
-      content: '';
+    .block{
       width: 100%;
       height: 15px;
       background: red;
       position: absolute;
       left: 0;
       top: -15px;
-      opacity: 0;
+      // opacity: 0;
     }
   }
 </style>

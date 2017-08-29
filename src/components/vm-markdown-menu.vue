@@ -32,7 +32,7 @@
       <VmMarkdownButton icon="iconfont icon-ul" @click.native="insertText('- Unordered List\n')"></VmMarkdownButton>
       <VmMarkdownButton icon="iconfont icon-quote"  @click.native="insertText(' > Blockquote\n\n')"></VmMarkdownButton>
       <VmMarkdownButton icon="iconfont icon-code" @click.native="insertText('```\nCode\n```\n')"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-table" @click.native="insertText()">
+      <VmMarkdownButton icon="iconfont icon-table">
         <VmMarkdownTable :hoverColor="bgMenu">
         </VmMarkdownTable>
       </VmMarkdownButton>
@@ -42,13 +42,12 @@
       <VmMarkdownButton icon="iconfont icon-link" @click.native="insertText('[JesseLuo](https://github.com/luosijie)')"></VmMarkdownButton>
       <VmMarkdownButton icon="iconfont icon-line" @click.native="insertText('***\n')"></VmMarkdownButton>
     </div>
-    <div class="layout">
-      <VmMarkdownButton icon="iconfont icon-layout-default"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-layout-right"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-layout-left"></VmMarkdownButton>
-      <VmMarkdownButton icon="iconfont icon-layout-zoom"></VmMarkdownButton>
+    <div class="vm-markdown-layout">
+      <VmMarkdownButton icon="iconfont icon-layout-default" data-layout="default"></VmMarkdownButton>
+      <VmMarkdownButton icon="iconfont icon-layout-right" data-layout="right"></VmMarkdownButton>
+      <VmMarkdownButton icon="iconfont icon-layout-left" data-layout="left"></VmMarkdownButton>
+      <VmMarkdownButton icon="iconfont icon-layout-zoom" data-layout="zoom"></VmMarkdownButton>
     </div>
-    <slot></slot>
   </div>
 </template>
 <style lang="scss">
@@ -62,7 +61,7 @@
     border-radius: 4px 4px 0px 0px;
     position: relative;
     
-    .command, .layout{
+    .command, .vm-markdown-layout{
       display: flex;
     }
     .line{
@@ -94,6 +93,7 @@
 import VmMarkdownButton from './vm-markdown-button.vue'
 import VmMarkdownDropdown from './vm-markdown-dropdown.vue'
 import VmMarkdownTable from './vm-markdown-table.vue'
+// import insertText from '../assets/js/insertText.js'
 export default {
   name: 'VmMarkdownMenu',
   components: {
@@ -131,7 +131,7 @@ export default {
   methods: {
     insertText(string){
       document.execCommand('insertText', false, string)
-    }
+    },
   },
   mounted () {
     let menu = document.querySelector('.vm-editor-menu')

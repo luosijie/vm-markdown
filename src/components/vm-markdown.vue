@@ -1,20 +1,20 @@
 <template>
   <div class="vm-markdown" :style="{width: width, height:height}">
-    <VmMarkdownMenu :bgMenu="themeValue.bgMenu"
+    <VmMarkdownMenu :bgMenu="themeValue.bgMenu" 
                     :menuBorder="themeValue.menuBorder"
                     :menuColor="themeValue.menuColor"
                     :hoverColor="themeValue.hoverColor"
-                    @click.native="layout"
+                    @textChange="updateHtmlString"
                   >
     </VmMarkdownMenu>
     <div class="content">
-      <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
-        <textarea v-focus class="content-markdown" v-model="markdString"></textarea>
+      <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}" contenteditable="true">
+        <textarea v-focus class="vm-markdown-content" v-model="markdString"></textarea>
       </div>
       <div class="vm-markdown-html" v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}">
       </div>
     </div>
-
+    
   </div>
 </template>
 <style lang="scss">
@@ -37,8 +37,8 @@
       font-size: 16px;
       border: 1px solid #eeeff1;
       border-top: none;
-      .vm-markdown-edit, .render{
-        height: 100%;
+      .vm-markdown-edit, .render{       
+        height: 100%;    
       }
       .vm-markdown-edit{
         width: 50%;
@@ -46,7 +46,7 @@
         outline: none;
         border-right: 1px solid #eeeff1;
         flex-shrink: 0;
-        textarea{
+        .vm-markdown-content{
           width: 100%;
           height: 100%;
           padding: 15px;
@@ -168,34 +168,45 @@ export default {
     }
   },
   methods: {
-    layout: function (event) {
-      let VmMarkdown = document.querySelector('.vm-markdown')
-      let VmMarkdownEdit = document.querySelector('.vm-markdown-edit')
-      function classHas(str){
-        return event.target.classList.contains(str)
-      }
-      if(classHas('icon-layout-zoom')){
-
-        if (VmMarkdown.style.position === 'fixed') {
-          VmMarkdown.style = 'width:' + this.width + ';' +
-                             'height:' + this.height + ';'
-        }else{
-          VmMarkdown.style.position = 'fixed'
-          VmMarkdown.style.left = '0'
-          VmMarkdown.style.top = '0'
-          VmMarkdown.style.margin = '0'
-          VmMarkdown.style.width = '100%'
-          VmMarkdown.style.height = '100%'
-        }
-      }else if (classHas('icon-layout-left')) {
-        VmMarkdownEdit.style.width = '0'
-      }else if (classHas('icon-layout-right')) {
-        VmMarkdownEdit.style.width = '100%'
-      }else if (classHas('icon-layout-default')) {
-        VmMarkdownEdit.style.width = '50%'
-      }
+    updateHtmlString (data) {
+      this.markdString = data
     },
-    parseHtml: function () {
+    layoutControl () {
+      let VmMarkdownLayout = document.querySelector('.vm-markdown-layout')
+      let VmMarkdown = document.querySelector('.vm-markdown')
+      let VmMarkdownEdit = document.querySelector('.vm-markdown-edit') 
+      
+      let buttons = VmMarkdownLayout.querySelectorAll('button')
+      buttons.forEach(elem=>{
+        elem.addEventListener('click', evt => {
+          switch (elem.dataset.layout) {
+            case 'default' :
+              VmMarkdownEdit.style.width = '50%'
+              break;
+            case 'right' :
+              VmMarkdownEdit.style.width = '100%'
+              break;
+            case 'left' :
+              VmMarkdownEdit.style.width = '0'
+              break;
+            case 'zoom' :
+              if (VmMarkdown.style.position === 'fixed') {
+                VmMarkdown.style = 'width:' + this.width + ';' +
+                                   'height:' + this.height + ';'
+              }else{
+                VmMarkdown.style.position = 'fixed'
+                VmMarkdown.style.left = '0'
+                VmMarkdown.style.top = '0'
+                VmMarkdown.style.margin = '0'
+                VmMarkdown.style.width = '100%'
+                VmMarkdown.style.height = '100%'
+              }
+              break
+          }
+        })
+      })
+    },
+    parseHtml () {
       let style = {
         ul: `
               margin: 10px 20px;
@@ -264,7 +275,7 @@ export default {
         }
       }
     },
-    getHtml: function () {
+    getHtml () {
       let html = document.querySelector('.vm-markdown-html')
       this.$emit('getHtml', html.innerHTML)
     }
@@ -291,13 +302,14 @@ export default {
   },
   mounted () {
     this.markdString = this.defaultText
+    this.layoutControl()
   },
   directives: {
     focus: {
       inserted: function (el) {
         el.focus()
       }
-    },
+    }
   }
 }
 </script>

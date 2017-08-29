@@ -1,6 +1,6 @@
 <template>
   <VmMarkdownDropdown>
-    <ul class="vm-markdown-table" v-insertTable:color="filterColor">
+    <ul class="vm-markdown-table">
     </ul>
   </VmMarkdownDropdown>
 </template>
@@ -29,6 +29,7 @@
 </style>
 <script>
 import VmMarkdownDropdown from './vm-markdown-dropdown.vue'
+// import insertText from '../assets/js/insertText.js'
 export default {
   name: 'VmMarkdownTable',
   components: {
@@ -49,60 +50,55 @@ export default {
       }
     }
   },
-  directives:{
-    insertTable: {
-      inserted: function(el,binding){
-        let length = 24
-        let x = 0, y = 0
-        for(let i=0; i<length; i++){
-          let setx = i%6 + 1
-          let sety = parseInt(i/6) + 1
-          let li = document.createElement('li')
-          li.setAttribute('data-x', setx)
-          li.setAttribute('data-y', sety)
-          el.appendChild(li)
-        }
-
-        el.addEventListener('mouseover', function(evt){
-          if (evt.target.tagName === 'LI') {
-            x= evt.target.getAttribute('data-x')
-            y= evt.target.getAttribute('data-y')
-            let lis = el.querySelectorAll('li')
-            for(let i=0; i<lis.length; i++){
-              lis[i].style.backgroundColor = '#e0e0e0'
-              if(lis[i].dataset.x <= x && lis[i].dataset.y <= y){
-                lis[i].style.backgroundColor = binding.value
-              }
-            }
-          }
-        })
-
-        el.addEventListener('click', function(evt){
-          if(x && y){
-            let th = '| Head '
-            let td = '| Data '
-            let tl = '| ---  '
-            let str = ''
-            let ths = '', tls = '', tds = ''
-            for(let i=0; i<x; i++){
-              ths = ths.concat(th)
-              tls = tls.concat(tl)
-            }
-            for(let j=0; j<y; j++){
-              for(let k=0; k<x; k++){
-                tds = tds.concat(td)
-              }
-              tds += ' |\n'
-            }
-            ths += ' |\n'
-            tls += ' |\n'
-            str += ths + tls + tds
-            document.execCommand('insertText', false, str)
-          }         
-          
-        })
-      }
+  mounted () {
+    let table = document.querySelector('.vm-markdown-table')
+    let length = 24
+    let x = 0, y = 0
+    for(let i=0; i<length; i++){
+      let setx = i%6 + 1
+      let sety = parseInt(i/6) + 1
+      let li = document.createElement('li')
+      li.setAttribute('data-x', setx)
+      li.setAttribute('data-y', sety)
+      table.appendChild(li)
     }
+
+    table.addEventListener('mouseover', evt => {
+      if (evt.target.tagName === 'LI') {
+        x= evt.target.getAttribute('data-x')
+        y= evt.target.getAttribute('data-y')
+        let lis = table.querySelectorAll('li')
+        for(let i=0; i<lis.length; i++){
+          lis[i].style.backgroundColor = '#e0e0e0'
+          if(lis[i].dataset.x <= x && lis[i].dataset.y <= y){
+            lis[i].style.backgroundColor = this.filterColor
+          }
+        }
+      }
+    })
+    table.addEventListener('click', evt => {
+      if(x && y){
+        let th = '| Head '
+        let td = '| Data '
+        let tl = '| ---  '
+        let str = ''
+        let ths = '', tls = '', tds = ''
+        for(let i=0; i<x; i++){
+          ths = ths.concat(th)
+          tls = tls.concat(tl)
+        }
+        for(let j=0; j<y; j++){
+          for(let k=0; k<x; k++){
+            tds = tds.concat(td)
+          }
+          tds += ' |\n'
+        }
+        ths += ' |\n'
+        tls += ' |\n'
+        str += ths + tls + tds
+        document.execCommand('insertText', false, str)
+      }
+    })
   }
 }
 </script>

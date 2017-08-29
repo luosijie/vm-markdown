@@ -1,9 +1,8 @@
 <template>
-  <button class="vm-markdown-button" :class="{ active: slot }" @mouseleave="hideSlot" @click="showSlot">
+  <button class="vm-markdown-button"  @click="showSlot">
     <i :class="icon"></i>
     <!-- <i :class="icon" @click="showSlot"></i> -->
     <slot v-if="slot"></slot>
-    <span class="block"></span>
   </button>
 </template>
 <style lang="scss">
