@@ -1,7 +1,7 @@
 {
   "name": "vm-markdown",
   "description": "A Vue Markdown Editor",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Jesse Luo <luo_sj@163.com>",
   "private": false,
   "main": "./publish/vm_markdown.min.js",

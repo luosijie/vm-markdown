@@ -5,7 +5,7 @@
     <strong>Markdown for Vue,</strong> <a href="https://luosijie.github.io/vm-markdown/">Live Demo</a>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.2.2-blue.svg?style=flat">
+  <img src="https://img.shields.io/badge/version-0.2.3-blue.svg?style=flat">
   <img src="https://img.shields.io/badge/dependency-vue-green.svg?style=flat">
   <img src="https://img.shields.io/badge/dependency-marked-yellow.svg?style=flat">
 </p>
@@ -13,12 +13,12 @@
 ### Install
 
 ```bash
-npm install --save vm-markdwon
+npm install --save vm-markdown
 ```
 ### Usage
 
 ```js
-import VmMarkdown from 'vm-markdwon'
+import VmMarkdown from 'vm-markdown'
 export default {
   ...
   components: {
