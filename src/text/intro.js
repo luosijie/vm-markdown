@@ -1,11 +1,11 @@
 let intro = 
 `### Install
 \`\`\`
-npm install --save vm-markdwon
+npm install --save vm-markdown
 \`\`\`
 ### Usage
 \`\`\`
-import VmMarkdown from 'vm-markdwon'
+import VmMarkdown from 'vm-markdown'
 export default {
   ...
   components: {
