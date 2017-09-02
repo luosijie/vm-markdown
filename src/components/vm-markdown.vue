@@ -283,7 +283,7 @@ export default {
     },
     getHtml () {
       let html = document.querySelector('.vm-markdown-html')
-      this.$emit('getHtml', html.innerHTML)
+      this.$emit('gethtml', html.innerHTML)
     }
   },
   watch: {

@@ -26,7 +26,7 @@
     <VmMarkdown :theme="theme" 
                 width="1000px" 
                 height="800px" 
-                v-on:getHtml="showHtml"
+                v-on:gethtml="showHtml"
                 class="markdown"
                 :defaultText="intro">
     </VmMarkdown>
@@ -41,7 +41,7 @@
 
 <script>
 import VmMarkdown from './components/vm-markdown.vue'
-// import VmMarkdown from '../publish/vm_markdown.min.js'
+// import VmMarkdown from '../dist/vm_markdown.min.js'
 import intro from './text/intro.js'
 export default {
   name: 'app',

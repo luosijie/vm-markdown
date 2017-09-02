@@ -5,7 +5,7 @@
     <strong>Markdown for Vue,</strong> <a href="https://luosijie.github.io/vm-markdown/">Live Demo</a>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.2.4-blue.svg?style=flat">
+  <img src="https://img.shields.io/badge/version-0.2.6-blue.svg?style=flat">
   <img src="https://img.shields.io/badge/dependency-vue-green.svg?style=flat">
   <img src="https://img.shields.io/badge/dependency-marked-yellow.svg?style=flat">
 </p>
@@ -34,10 +34,10 @@ export default {
 ```
 
 ```vue
-<VmMarkdown :theme="theme" 
+<VmMarkdown theme="default" //dark, green, gray, princess 
             width="1000px" 
             height="600px" 
-            v-on:getHtml="showHtml"
+            v-on:gethtml="showHtml"
             :defaultText="intro">
 </VmMarkdown>
 ```

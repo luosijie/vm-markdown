@@ -2,9 +2,9 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/components/vm-markdown.vue',
+  entry: './src/components/index.js',
   output: {
-    path: path.resolve(__dirname, './publish'),
+    path: path.resolve(__dirname, './dist'),
     // publicPath: '/dist/',
     filename: 'vm_markdown.min.js',
     library: 'vm-markdown',
