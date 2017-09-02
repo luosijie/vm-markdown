@@ -20,10 +20,10 @@ export default {
 }
 \`\`\`
 \`\`\`
-<VmMarkdown :theme="theme" 
+<VmMarkdown theme="default" //dark, green, gray, princess
             width="1000px" 
             height="600px" 
-            v-on:getHtml="showHtml"
+            v-on:gethtml="showHtml"
             :defaultText="intro">
 </VmMarkdown>
 \`\`\`
