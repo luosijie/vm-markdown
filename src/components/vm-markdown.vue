@@ -92,6 +92,7 @@
               background-color: #f2f2f2;
               color: #656565;
               font-size: 14px;
+              white-space: pre-wrap;
             }
         blockquote{
                       display: block;
