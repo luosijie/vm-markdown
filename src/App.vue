@@ -59,13 +59,13 @@ export default {
       // get html string here
     },
     selectTheme (evt) {
-      if(evt.target.tagName === 'SPAN'){
+      if(evt.target.tagName.toLowerCase() === 'span'){
         let theme = evt.target.dataset.theme
         let themeType = document.querySelector('.theme-type')
         let spans = evt.target.parentNode.querySelectorAll('span')
-        spans.forEach(elem => {
-          elem.style = ''
-        })
+        for(let i; i < spans.length; i++){
+          spans[i].style = ''
+        }
         this.theme = theme
         themeType.innerText = theme
         evt.target.style.width = '28px'
