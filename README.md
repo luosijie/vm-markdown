@@ -27,6 +27,9 @@ export default {
   methods: {
   	showHtml (html) {
       // get html string here
+    },
+    showRaw (raw) {
+      // get raw string here
     }
   }
   ...
@@ -38,6 +41,7 @@ export default {
             width="1000px" 
             height="600px" 
             v-on:gethtml="showHtml"
+            v-on:getraw="showRaw"
             :defaultText="intro">
 </VmMarkdown>
 ```

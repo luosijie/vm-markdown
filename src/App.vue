@@ -27,6 +27,7 @@
                 width="1000px" 
                 height="800px" 
                 v-on:gethtml="showHtml"
+                v-on:getraw="showRaw"
                 class="markdown"
                 :defaultText="intro">
     </VmMarkdown>
@@ -57,6 +58,9 @@ export default {
   methods: {
     showHtml (html) {
       // get html string here
+    },
+    showRaw (raw) {
+      // get raw string here
     },
     selectTheme (evt) {
       if(evt.target.tagName.toLowerCase() === 'span'){
