@@ -284,6 +284,9 @@ export default {
     getHtml () {
       let html = document.querySelector('.vm-markdown-html')
       this.$emit('gethtml', html.innerHTML)
+    },
+    getMarkdown () {
+      this.$emit('input', this.markdString)
     }
   },
   watch: {
@@ -303,6 +306,7 @@ export default {
       setTimeout(()=>{
         this.parseHtml()
         this.getHtml()
+        this.getMarkdown()
       },0)
     }
   },
