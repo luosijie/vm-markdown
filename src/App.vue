@@ -41,7 +41,7 @@
 
 <script>
 import VmMarkdown from './components/vm-markdown.vue'
-import 'highlight.js/styles/github.cs'
+import 'highlight.js/styles/github.css'
 // import VmMarkdown from '../dist/vm_markdown.min.js'
 import intro from './text/intro.js'
 export default {

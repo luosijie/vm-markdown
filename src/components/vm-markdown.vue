@@ -4,13 +4,13 @@
         </VmMarkdownMenu>
         <div class="content">
             <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
-                <textarea class="vm-markdown-content" v-model="markdString"></textarea>
+                <textarea class="vm-markdown-content" v-model="markdString"/>
             </div>
             <div 
                 class="markdown-body"
-                v-html="htmlString" :style="{backgroundColor: themeValue.bgRight}"
-            >
-            </div>
+                v-html="htmlString"
+                :style="{backgroundColor: themeValue.bgRight}"
+            />
         </div>
     </div>
 </template>
