@@ -15,6 +15,7 @@
     "dist": "webpack --config webpack.dist.config.js"
   },
   "dependencies": {
+    "highlight.js": "^9.13.1",
     "marked": "^0.6.0",
     "vue": "^2.3.3"
   },
