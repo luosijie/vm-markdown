@@ -4,7 +4,7 @@
   "version": "0.2.8",
   "author": "Jesse Luo <luo_sj@163.com>",
   "private": false,
-  "main": "./dist/vm_markdown.min.js",
+  "main": "./dist/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/luosijie/vm-markdown"

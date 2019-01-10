@@ -14,70 +14,11 @@
         </div>
     </div>
 </template>
-<style lang="scss">
-@import url('../assets/iconfont/iconfont.css');
 
-// @import url('//at.alicdn.com/t/font_395110_atvjh67aqsuzyqfr.css');
-.vm-markdown {
-    background-color: white;
-    border-radius: 4px;
-    min-width: 700px;
-    min-height: 300px;
-    overflow: hidden;
-
-    .content {
-        display: flex;
-        position: relative;
-        box-sizing: border-box;
-        overflow: hidden;
-        height: calc(100% - 40px);
-        width: 100%;
-        text-align: left;
-        font-size: 16px;
-        border: 1px solid #eeeff1;
-        border-top: none;
-
-        .vm-markdown-edit,
-        .render {
-            height: 100%;
-        }
-
-        .vm-markdown-edit {
-            width: 50%;
-            box-sizing: border-box;
-            outline: none;
-            border-right: 1px solid #eeeff1;
-            flex-shrink: 0;
-
-            .vm-markdown-content {
-                width: 100%;
-                height: 100%;
-                padding: 15px;
-                overflow: auto;
-                box-sizing: border-box;
-                resize: none;
-                outline: none;
-                border: none;
-                background-color: transparent;
-                font-size: 14px;
-                color: #232323;
-                line-height: 24px;
-            }
-        }
-        .markdown-body {
-            padding: 15px;
-            overflow: auto;
-            flex-grow: 1;
-            word-wrap: break-word;
-        }
-    }
-}
-
-</style>
 <script>
 import VmMarkdownMenu from './vm-markdown-menu.vue'
 import marked from 'marked'
-import theme from '../theme/theme.js'
+import theme from '../config/theme.js'
 import hljs from 'highlight.js'
 export default {
     name: 'VmMarkdown',
@@ -157,7 +98,7 @@ export default {
             }
         },
         getHtml() {
-            let html = document.querySelector('.vm-markdown-html')
+            let html = document.querySelector('.markdown-body')
             this.$emit('gethtml', html.innerHTML)
         }
     },
@@ -193,3 +134,64 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+@import url('../assets/iconfont/iconfont.css');
+
+// @import url('//at.alicdn.com/t/font_395110_atvjh67aqsuzyqfr.css');
+.vm-markdown {
+    background-color: white;
+    border-radius: 4px;
+    min-width: 700px;
+    min-height: 300px;
+    overflow: hidden;
+
+    .content {
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+        overflow: hidden;
+        height: calc(100% - 40px);
+        width: 100%;
+        text-align: left;
+        font-size: 16px;
+        border: 1px solid #eeeff1;
+        border-top: none;
+
+        .vm-markdown-edit,
+        .render {
+            height: 100%;
+        }
+
+        .vm-markdown-edit {
+            width: 50%;
+            box-sizing: border-box;
+            outline: none;
+            border-right: 1px solid #eeeff1;
+            flex-shrink: 0;
+
+            .vm-markdown-content {
+                width: 100%;
+                height: 100%;
+                padding: 15px;
+                overflow: auto;
+                box-sizing: border-box;
+                resize: none;
+                outline: none;
+                border: none;
+                background-color: transparent;
+                font-size: 14px;
+                color: #232323;
+                line-height: 24px;
+            }
+        }
+        .markdown-body {
+            padding: 15px;
+            overflow: auto;
+            flex-grow: 1;
+            word-wrap: break-word;
+        }
+    }
+}
+
+</style>
