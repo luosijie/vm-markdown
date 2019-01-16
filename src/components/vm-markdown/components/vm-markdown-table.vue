@@ -1,8 +1,7 @@
 <template>
-    <VmMarkdownDropdown>
-        <ul class="vm-markdown-table">
-        </ul>
-    </VmMarkdownDropdown>
+    <vm-markdown-dropdown>
+        <ul class="vm-markdown-table"/>
+    </vm-markdown-dropdown>
 </template>
 <style lang="scss">
 ul.vm-markdown-table {

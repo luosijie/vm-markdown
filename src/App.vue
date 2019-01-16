@@ -23,13 +23,13 @@
       <span data-theme="princess"></span>
     </div>
     <h4>theme = "<span class="theme-type">default</span>"</h4>
-    <VmMarkdown :theme="theme" 
+    <vm-markdown :theme="theme" 
                 width="1000px" 
                 height="800px" 
                 v-on:gethtml="showHtml"
                 class="markdown"
                 :defaultText="intro">
-    </VmMarkdown>
+    </vm-markdown>
     <div class="author">
       <a href="https://github.com/luosijie/vm-markdown">
         <i class="iconfont icon-github"></i>

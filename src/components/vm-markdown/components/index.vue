@@ -1,7 +1,7 @@
 <template>
     <div class="vm-markdown" :style="{width: width, height:height}">
-        <VmMarkdownMenu :bgMenu="themeValue.bgMenu" :menuBorder="themeValue.menuBorder" :menuColor="themeValue.menuColor" :hoverColor="themeValue.hoverColor" @textChange="updateHtmlString">
-        </VmMarkdownMenu>
+        <vm-markdown-menu :bgMenu="themeValue.bgMenu" :menuBorder="themeValue.menuBorder" :menuColor="themeValue.menuColor" :hoverColor="themeValue.hoverColor" @textChange="updateHtmlString">
+        </vm-markdown-menu>
         <div class="content">
             <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
                 <textarea class="vm-markdown-content" v-model="markdString"/>

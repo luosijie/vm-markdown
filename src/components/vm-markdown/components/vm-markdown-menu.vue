@@ -1,8 +1,8 @@
 <template>
     <div class="vm-editor-menu" :style="{backgroundColor:bgMenu, color:menuColor, border:menuBorder}">
         <div class="command">
-            <VmMarkdownButton icon="iconfont icon-heading">
-                <VmMarkdownDropdown>
+            <vm-markdown-button icon="iconfont icon-heading">
+                <vm-markdown-dropdown>
                     <ul class="vm-editor-ul" :style="{color: filterColor}">
                         <li @click="insertText('# Title\n')">
                             <h1>H1</h1>
@@ -20,30 +20,29 @@
                             <h5>H5</h5>
                         </li>
                     </ul>
-                </VmMarkdownDropdown>
-            </VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-bold" @click.native="insertText(' **Bold** ')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-italic" @click.native="insertText(' *Italic* ')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-strikethrough" @click.native="insertText(' ~~Strikethrough~~ ')">
-            </VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-ol" @click.native="insertText('1. Ordered List\n')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-ul" @click.native="insertText('- Unordered List\n')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-quote" @click.native="insertText(' > Blockquote\n\n')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-code" @click.native="insertText('```\nCode\n```\n')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-table">
-                <VmMarkdownTable :hoverColor="bgMenu" @textChange="uploadTable">
-                </VmMarkdownTable>
-            </VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-image" @click.native="insertText('![Logo](https://github.com/luosijie/Front-end-Blog/blob/master/img/logo_vmmarkdown_name.png?raw=true)\n')">
-            </VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-link" @click.native="insertText('[JesseLuo](https://github.com/luosijie)')"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-line" @click.native="insertText('***\n')"></VmMarkdownButton>
+                </vm-markdown-dropdown>
+            </vm-markdown-button>
+            <vm-markdown-button icon="iconfont icon-bold" @click.native="insertText(' **Bold** ')"/>
+            <vm-markdown-button icon="iconfont icon-italic" @click.native="insertText(' *Italic* ')"/>
+            <vm-markdown-button icon="iconfont icon-strikethrough" @click.native="insertText(' ~~Strikethrough~~ ')">
+            </vm-markdown-button>
+            <vm-markdown-button icon="iconfont icon-ol" @click.native="insertText('1. Ordered List\n')"/>
+            <vm-markdown-button icon="iconfont icon-ul" @click.native="insertText('- Unordered List\n')"/>
+            <vm-markdown-button icon="iconfont icon-quote" @click.native="insertText(' > Blockquote\n\n')"/>
+            <vm-markdown-button icon="iconfont icon-code" @click.native="insertText('```\nCode\n```\n')"/>
+            <vm-markdown-button icon="iconfont icon-table">
+                <vm-markdown-table :hoverColor="bgMenu" @textChange="uploadTable"/>
+            </vm-markdown-button>
+            <vm-markdown-button icon="iconfont icon-image" @click.native="insertText('![Logo](https://github.com/luosijie/Front-end-Blog/blob/master/img/logo_vmmarkdown_name.png?raw=true)\n')">
+            </vm-markdown-button>
+            <vm-markdown-button icon="iconfont icon-link" @click.native="insertText('[JesseLuo](https://github.com/luosijie)')"/>
+            <vm-markdown-button icon="iconfont icon-line" @click.native="insertText('***\n')"/>
         </div>
         <div class="vm-markdown-layout">
-            <VmMarkdownButton icon="iconfont icon-layout-default" layout="default"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-layout-right" layout="right"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-layout-left" layout="left"></VmMarkdownButton>
-            <VmMarkdownButton icon="iconfont icon-layout-zoom" layout="zoom"></VmMarkdownButton>
+            <vm-markdown-button icon="iconfont icon-layout-default" layout="default"/>
+            <vm-markdown-button icon="iconfont icon-layout-right" layout="right"/>
+            <vm-markdown-button icon="iconfont icon-layout-left" layout="left"/>
+            <vm-markdown-button icon="iconfont icon-layout-zoom" layout="zoom"/>
         </div>
     </div>
 </template>
