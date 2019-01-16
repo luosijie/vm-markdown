@@ -3,7 +3,7 @@ var webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-    entry: './src/components/index.js',
+    entry: './src/components/vm-markdown/index.js',
     mode: 'production',
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -12,9 +12,9 @@ module.exports = {
         library: 'vm-markdown',
         libraryTarget: 'umd'
     },
-    optimization: {
-        minimize: true
-    },
+    // optimization: {
+    //     minimize: true
+    // },
     plugins: [
         new VueLoaderPlugin()
     ],
