@@ -33,7 +33,8 @@
             <vm-markdown-button icon="iconfont icon-table">
                 <vm-markdown-table :hoverColor="bgMenu" @textChange="uploadTable"/>
             </vm-markdown-button>
-            <vm-markdown-button icon="iconfont icon-image" @click.native="insertText('![Logo](https://github.com/luosijie/Front-end-Blog/blob/master/img/logo_vmmarkdown_name.png?raw=true)\n')">
+            <vm-markdown-button icon="iconfont icon-image" keepSlot>
+                <input type="file" accept="image/jpeg,image/jpg,image/png" @change="insertImage" class="load-img">
             </vm-markdown-button>
             <vm-markdown-button icon="iconfont icon-link" @click.native="insertText('[JesseLuo](https://github.com/luosijie)')"/>
             <vm-markdown-button icon="iconfont icon-line" @click.native="insertText('***\n')"/>
@@ -60,6 +61,12 @@ export default {
         VmMarkdownTable
     },
     props: {
+        uploadImage: {
+            type: Function,
+            default() {
+                return () => {}
+            }
+        },
         bgMenu: {
             type: String,
             default: '#fafbfc'
@@ -87,6 +94,15 @@ export default {
         }
     },
     methods: {
+        async insertImage(e) {
+            const files = e.target.files || e.dataTransfer.files;
+            const file = files[0];
+            if (!files.length)
+                return;
+            let imgUrl = await this.uploadImage(file);
+            imgUrl = `![image](${imgUrl})` 
+            this.insertText(imgUrl)
+        },
         insertText(string) {
             let content = document.querySelector('.vm-markdown-content')
             insertText(content, string)
@@ -157,5 +173,15 @@ ul.vm-editor-ul {
         }
     }
 }
-
+.load-img {
+    display: inline-block;
+    z-index: 999;
+	cursor: pointer;
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
 </style>

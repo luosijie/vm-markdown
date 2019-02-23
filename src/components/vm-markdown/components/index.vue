@@ -1,6 +1,12 @@
 <template>
     <div class="vm-markdown" :style="{width: width, height:height}">
-        <vm-markdown-menu :bgMenu="themeValue.bgMenu" :menuBorder="themeValue.menuBorder" :menuColor="themeValue.menuColor" :hoverColor="themeValue.hoverColor" @textChange="updateHtmlString">
+        <vm-markdown-menu
+            :bgMenu="themeValue.bgMenu"
+            :menuBorder="themeValue.menuBorder"
+            :menuColor="themeValue.menuColor"
+            :hoverColor="themeValue.hoverColor"
+            :uploadImage="uploadImage"
+            @textChange="updateHtmlString">
         </vm-markdown-menu>
         <div class="content">
             <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
@@ -26,6 +32,12 @@ export default {
         VmMarkdownMenu,
     },
     props: {
+        uploadImage: {
+            type: Function,
+            default() {
+                return () => {};
+            }
+        },
         theme: {
             type: String,
             default: 'default'

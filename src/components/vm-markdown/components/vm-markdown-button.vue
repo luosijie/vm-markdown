@@ -17,18 +17,26 @@ export default {
         layout: {
             type: String,
             default: ''
+        },
+        keepSlot: {
+            type: Boolean,
+            defult: false
         }
     },
     data: function() {
         return {
-            slot: false
+            slot: this.keepSlot
         }
     },
     methods: {
         showSlot() {
+            if(this.keepSlot)
+                return
             this.slot === false ? this.slot = true : this.slot = false
         },
         hideSlot() {
+            if(this.keepSlot) 
+                return
             this.slot = false
         },
     }
