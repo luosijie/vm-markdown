@@ -70,50 +70,6 @@ export default {
             }
         }
     },
-    methods: {
-        updateHtmlString(data) {
-            this.markdString = data
-        },
-        layoutControl() {
-            let VmMarkdownLayout = document.querySelector('.vm-markdown-layout')
-            let VmMarkdown = document.querySelector('.vm-markdown')
-            let VmMarkdownEdit = document.querySelector('.vm-markdown-edit')
-
-            let is = VmMarkdownLayout.querySelectorAll('i')
-            for (let i = 0; i < is.length; i++) {
-                is[i].addEventListener('click', evt => {
-                    switch (is[i].dataset.layout) {
-                        case 'default':
-                            VmMarkdownEdit.style.width = '50%'
-                            break;
-                        case 'right':
-                            VmMarkdownEdit.style.width = '100%'
-                            break;
-                        case 'left':
-                            VmMarkdownEdit.style.width = '0'
-                            break;
-                        case 'zoom':
-                            if (VmMarkdown.style.position === 'fixed') {
-                                VmMarkdown.style.cssText = 'width:' + this.width + ';' +
-                                    'height:' + this.height + ';'
-                            } else {
-                                VmMarkdown.style.position = 'fixed'
-                                VmMarkdown.style.left = '0'
-                                VmMarkdown.style.top = '0'
-                                VmMarkdown.style.margin = '0'
-                                VmMarkdown.style.width = '100%'
-                                VmMarkdown.style.height = '100%'
-                            }
-                            break
-                    }
-                })
-            }
-        },
-        getHtml() {
-            let html = document.querySelector('.markdown-body')
-            this.$emit('gethtml', html.innerHTML)
-        }
-    },
     watch: {
         markdString(value) {
             this.$emit('getMarkdString', value)
@@ -141,7 +97,56 @@ export default {
     },
     mounted() {
         this.markdString = this.defaultText
-        this.layoutControl()
+        // this.layoutControl()
+    },
+    methods: {
+        updateHtmlString(data) {
+            this.markdString = data
+        },
+        // layoutControl() {
+        //     let VmMarkdownLayout = document.querySelector('.vm-markdown-layout')
+        //     let VmMarkdown = document.querySelector('.vm-markdown')
+        //     let VmMarkdownEdit = document.querySelector('.vm-markdown-edit')
+
+        //     let is = VmMarkdownLayout.querySelectorAll('i')
+        //     for (let i = 0; i < is.length; i++) {
+        //         is[i].addEventListener('click', evt => {
+        //             switch (is[i].dataset.layout) {
+        //                 case 'default':
+        //                     VmMarkdownEdit.style.width = '50%'
+        //                     break
+        //                 case 'right':
+        //                     VmMarkdownEdit.style.width = '100%'
+        //                     break
+        //                 case 'left':
+        //                     VmMarkdownEdit.style.width = '0'
+        //                     break
+        //                 case 'zoom':
+        //                     if (VmMarkdown.style.position === 'fixed') {
+        //                         VmMarkdown.style.cssText = `
+        //                             width: ${this.width};
+        //                             height: ${this.height};
+        //                         `
+        //                     } else {
+        //                         VmMarkdown.style.cssText = `
+        //                             position: fixed;
+        //                             z-index: 999;
+        //                             left: 0;
+        //                             top: 0;
+        //                             margin: 0;
+        //                             width: 100%;
+        //                             height: 100%;
+        //                         `
+        //                     }
+        //                     break
+        //             }
+        //         })
+        //     }
+        // },
+        getHtml() {
+            let html = document.querySelector('.markdown-body')
+            this.$emit('gethtml', html.innerHTML)
+        }
     }
 }
 

@@ -40,10 +40,10 @@
             <vm-markdown-button icon="iconfont icon-line" @click.native="insertText('***\n')"/>
         </div>
         <div class="vm-markdown-layout">
-            <vm-markdown-button icon="iconfont icon-layout-default" layout="default"/>
-            <vm-markdown-button icon="iconfont icon-layout-right" layout="right"/>
-            <vm-markdown-button icon="iconfont icon-layout-left" layout="left"/>
-            <vm-markdown-button icon="iconfont icon-layout-zoom" layout="zoom"/>
+            <vm-markdown-button icon="iconfont icon-layout-default" layout="default" @click.native="setLayout('default')"/>
+            <vm-markdown-button icon="iconfont icon-layout-right" layout="right" @click.native="setLayout('right')"/>
+            <!-- <vm-markdown-button icon="iconfont icon-layout-left" layout="left"/> -->
+            <vm-markdown-button icon="iconfont icon-layout-zoom" layout="zoom" @click.native="setLayout('zoom')"/>
         </div>
     </div>
 </template>
@@ -110,6 +110,39 @@ export default {
         },
         uploadTable(content) {
             this.$emit('textChange', content)
+        },
+        setLayout(type) {
+            const VmMarkdown = document.querySelector('.vm-markdown')
+            const VmMarkdownEdit = document.querySelector('.vm-markdown-edit')
+            switch (type) {
+                case 'default':
+                    VmMarkdownEdit.style.width = '50%'
+                    break
+                case 'right':
+                    VmMarkdownEdit.style.width = '100%'
+                    break
+                case 'left':
+                    VmMarkdownEdit.style.width = '0'
+                    break
+                case 'zoom':
+                    if (VmMarkdown.style.position === 'fixed') {
+                        VmMarkdown.style.cssText = `
+                            width: ${this.$parent.width};
+                            height: ${this.$parent.height};
+                        `
+                    } else {
+                        VmMarkdown.style.cssText = `
+                            position: fixed;
+                            z-index: 999;
+                            left: 0;
+                            top: 0;
+                            margin: 0;
+                            width: 100%;
+                            height: 100%;
+                        `
+                    }
+                    break
+            }
         }
     },
     mounted() {
@@ -173,6 +206,7 @@ ul.vm-editor-ul {
         }
     }
 }
+
 .load-img {
     display: inline-block;
     z-index: 999;
