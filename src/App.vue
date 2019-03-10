@@ -22,11 +22,12 @@
         <vm-markdown
             :theme="theme"
             :uploadImage="uploadImage"
+            :defaultText="intro"
             width="1000px"
             height="800px"
-            v-on:gethtml="showHtml"
             class="markdown"
-            :defaultText="intro"
+            @html-content="showHtml"
+            @markdwon-content="showMarkdwon"
         />
         <div class="author">
             <a href="https://github.com/luosijie/vm-markdown">
@@ -70,7 +71,11 @@ export default {
             })
         },
         showHtml(html) {
+            console.log("html-content", html)
             // get html string here
+        },
+        showMarkdwon(markdown) {
+            // console.log("markdwon-content", markdown)
         },
         selectTheme(evt) {
             if (evt.target.tagName.toLowerCase() === "span") {
