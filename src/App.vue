@@ -19,7 +19,7 @@
             theme = "
             <span class="theme-type">default</span>"
         </h4>
-        <vm-markdown
+        <VmMarkdown
             :theme="theme"
             :uploadImage="uploadImage"
             :defaultText="intro"
@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import VmMarkdown from "./components/vm-markdown/index.js";
-import "highlight.js/styles/github.css";
-// import VmMarkdown from '../dist/vm_markdown.min.js'
-import intro from "./text/intro.js";
+// import VmMarkdown from './../dist/vm_markdown.min.js'
+import VmMarkdown from "./components/vm-markdown/index.js"
+import "highlight.js/styles/github.css"
+import intro from "./text/intro.js"
 import hljs from 'highlight.js'
 export default {
     name: "app",

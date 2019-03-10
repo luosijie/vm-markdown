@@ -1,6 +1,5 @@
-import VmMarkdown from './components/index.vue'
-
+import index from './components/index.vue'
 if (typeof window !== 'undefined' && window.Vue) {
-	window.Vue.component('VmMarkdown', VmMarkdown)
+	window.Vue.component('VmMarkdown', index)
 }
-export default VmMarkdown
+export default index

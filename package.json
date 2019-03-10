@@ -1,7 +1,7 @@
 {
     "name": "vm-markdown",
     "description": "A Vue Markdown Editor",
-    "version": "0.2.8",
+    "version": "0.2.9",
     "author": "Jesse Luo <luo_sj@163.com>",
     "private": false,
     "main": "./src/components/vm-markdown/index.js",
@@ -12,7 +12,7 @@
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
         "build:example": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-        "build:dist": "webpack --config webpack.dist.config.js"
+        "build:dist": "cross-env NODE_ENV=production webpack --config webpack.dist.config.js"
     },
     "dependencies": {
         "@babel/runtime": "^7.3.1",
@@ -22,6 +22,7 @@
     "devDependencies": {
         "@babel/core": "^7.2.2",
         "@babel/plugin-transform-runtime": "^7.2.0",
+        "@babel/polyfill": "^7.2.5",
         "@babel/preset-env": "^7.2.3",
         "babel-loader": "^8.0.5",
         "cross-env": "^5.2.0",
