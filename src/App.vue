@@ -26,8 +26,8 @@
             width="1000px"
             height="800px"
             class="markdown"
-            @html-content="showHtml"
-            @markdwon-content="showMarkdwon"
+            @html-change="htmlChange"
+            @markdwon-change="showMarkdwon"
         />
         <div class="author">
             <a href="https://github.com/luosijie/vm-markdown">
@@ -46,6 +46,7 @@ import VmMarkdown from "./components/vm-markdown/index.js";
 import "highlight.js/styles/github.css";
 // import VmMarkdown from '../dist/vm_markdown.min.js'
 import intro from "./text/intro.js";
+import hljs from 'highlight.js'
 export default {
     name: "app",
     components: {
@@ -70,8 +71,15 @@ export default {
                 }, 1000)
             })
         },
-        showHtml(html) {
+        htmlChange(html) {
             console.log("html-content", html)
+            this.$nextTick(() => {
+                const codes = document.querySelectorAll(".markdown-body pre code");
+                codes.forEach(elem => {
+                    hljs.highlightBlock(elem);
+                });
+                // let html = document.querySelector('.markdown-body')
+            });
             // get html string here
         },
         showMarkdwon(markdown) {

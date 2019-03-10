@@ -25,7 +25,6 @@
 import VmMarkdownMenu from './vm-markdown-menu.vue'
 import marked from 'marked'
 import theme from '../config/theme.js'
-import hljs from 'highlight.js'
 export default {
     name: 'VmMarkdown',
     components: {
@@ -72,7 +71,7 @@ export default {
     },
     watch: {
         markdString(value) {
-            this.$emit('markdwon-content', value)
+            this.$emit('markdwon-change', value)
             marked.setOptions({
                 renderer: new marked.Renderer(),
                 gfm: true,
@@ -84,14 +83,7 @@ export default {
                 smartypants: false
             })
             this.htmlString = marked(value)
-            this.$nextTick(() => {
-                const codes = document.querySelectorAll(".markdown-body pre code");
-                codes.forEach(elem => {
-                    hljs.highlightBlock(elem);
-                });
-                let html = document.querySelector('.markdown-body')
-                this.$emit('html-content', html.innerHTML)
-            });
+            this.$emit('html-change', value)
         }
     },
     mounted() {
@@ -108,8 +100,6 @@ export default {
 
 <style lang="scss">
 @import url('../assets/iconfont/iconfont.css');
-
-// @import url('//at.alicdn.com/t/font_395110_atvjh67aqsuzyqfr.css');
 .vm-markdown {
     background-color: white;
     border-radius: 4px;
