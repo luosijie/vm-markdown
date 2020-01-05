@@ -78,7 +78,6 @@ export default {
                 codes.forEach(elem => {
                     hljs.highlightBlock(elem);
                 });
-                // let html = document.querySelector('.markdown-body')
             });
             // get html string here
         },

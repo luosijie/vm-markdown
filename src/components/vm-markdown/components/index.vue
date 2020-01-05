@@ -1,36 +1,43 @@
 <template>
     <div class="vm-markdown" :style="{width: width, height:height}">
-        <vm-markdown-menu
-            :bgMenu="themeValue.bgMenu"
-            :menuBorder="themeValue.menuBorder"
-            :menuColor="themeValue.menuColor"
+        <VmMarkdownMenu 
+            :bgMenu="themeValue.bgMenu" 
+            :menuBorder="themeValue.menuBorder" 
+            :menuColor="themeValue.menuColor" 
             :hoverColor="themeValue.hoverColor"
-            :uploadImage="uploadImage"
-            @textChange="updateHtmlString">
-        </vm-markdown-menu>
+            :tools="tools" 
+            @textChange="updateHtmlString"
+            @file-loaded="fileLoaded">
+        </VmMarkdownMenu>
         <div class="content">
-            <div class="vm-markdown-edit" :style="{backgroundColor: themeValue.bgLeft}">
+            <div 
+                class="vm-markdown-edit" 
+                :style="{backgroundColor: themeValue.bgLeft}">
                 <textarea class="vm-markdown-content" v-model="markdString"/>
             </div>
             <div 
-                class="markdown-body"
-                v-html="htmlString"
-                :style="{backgroundColor: themeValue.bgRight}"
-            />
+                class="markdown-body vm-markdown-body" 
+                v-html="htmlString" 
+                :style="{backgroundColor: themeValue.bgRight}">
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import VmMarkdownMenu from './vm-markdown-menu.vue'
+import VmMarkdownMenu from './menu.vue'
 import marked from 'marked'
-import theme from '../config/theme.js'
+import theme from '../theme/theme.js'
+import hljs from "highlight.js";
+import insertText from '../assets/js/insertText.js'
+import "highlight.js/styles/github.css";
 export default {
     name: 'VmMarkdown',
     components: {
         VmMarkdownMenu,
     },
     props: {
+        value: '',
         uploadImage: {
             type: Function,
             default() {
@@ -52,9 +59,15 @@ export default {
         defaultText: {
             type: String,
             default: ''
+        },
+        tools: {
+            type: Object,
+            default() {
+                return {};
+            }
         }
     },
-    data: function() {
+    data() {
         return {
             markdString: '',
             htmlString: ''
@@ -69,9 +82,59 @@ export default {
             }
         }
     },
+    methods: {
+        async fileLoaded(files) {
+            const res = await this.uploadImage(files);
+            let content = document.querySelector('.vm-markdown-content');
+            const string = `![img](${res})`;
+            insertText(content, string);
+        },
+        updateHtmlString(data) {
+            this.markdString = data
+        },
+        layoutControl() {
+            let VmMarkdownLayout = document.querySelector('.vm-markdown-layout')
+            let VmMarkdown = document.querySelector('.vm-markdown')
+            let VmMarkdownEdit = document.querySelector('.vm-markdown-edit')
+
+            let is = VmMarkdownLayout.querySelectorAll('i')
+            for (let i = 0; i < is.length; i++) {
+                is[i].addEventListener('click', evt => {
+                    switch (is[i].dataset.layout) {
+                        case 'default':
+                            VmMarkdownEdit.style.width = '50%'
+                            break;
+                        case 'right':
+                            VmMarkdownEdit.style.width = '100%'
+                            break;
+                        case 'left':
+                            VmMarkdownEdit.style.width = '0'
+                            break;
+                        case 'zoom':
+                            if (VmMarkdown.style.position === 'fixed') {
+                                VmMarkdown.style.cssText = 'width:' + this.width + ';' +
+                                    'height:' + this.height + ';'
+                            } else {
+                                VmMarkdown.style.position = 'fixed'
+                                VmMarkdown.style.zIndex = 999
+                                VmMarkdown.style.left = '0'
+                                VmMarkdown.style.top = '0'
+                                VmMarkdown.style.margin = '0'
+                                VmMarkdown.style.width = '100%'
+                                VmMarkdown.style.height = '100%'
+                            }
+                            break
+                    }
+                })
+            }
+        },
+        getHtml() {
+            let html = document.querySelector('.vm-markdown-body')
+            this.$emit('gethtml', html.innerHTML)
+        }
+    },
     watch: {
         markdString(value) {
-            this.$emit('markdwon-change', value)
             marked.setOptions({
                 renderer: new marked.Renderer(),
                 gfm: true,
@@ -82,17 +145,25 @@ export default {
                 smartLists: true,
                 smartypants: false
             })
+            this.$emit('input', value)
             this.htmlString = marked(value)
-            this.$emit('html-change', value)
+            this.$nextTick(() => {
+                const codes = document.querySelectorAll(".markdown-body pre code");
+                codes.forEach(elem => {
+                    hljs.highlightBlock(elem);
+                });
+            });
+            setTimeout(() => {
+                this.getHtml()
+            }, 0)
+        },
+        value(value) {
+            this.markdString = value
         }
     },
     mounted() {
         this.markdString = this.defaultText
-    },
-    methods: {
-        updateHtmlString(data) {
-            this.markdString = data
-        }
+        this.layoutControl()
     }
 }
 
@@ -100,13 +171,12 @@ export default {
 
 <style lang="scss">
 @import url('../assets/iconfont/iconfont.css');
+
 .vm-markdown {
     background-color: white;
-    border-radius: 4px;
     min-width: 700px;
     min-height: 300px;
     overflow: hidden;
-
     .content {
         display: flex;
         position: relative;
