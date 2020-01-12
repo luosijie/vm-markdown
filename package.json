@@ -1,7 +1,7 @@
 {
     "name": "vm-markdown",
     "description": "A Vue Markdown Editor",
-    "version": "0.2.9",
+    "version": "0.3.0",
     "author": "Jesse Luo <luo_sj@163.com>",
     "private": false,
     "main": "./src/components/vm-markdown/index.js",
