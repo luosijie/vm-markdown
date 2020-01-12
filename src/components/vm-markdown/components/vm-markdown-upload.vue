@@ -8,7 +8,7 @@
     </vm-markdown-dropdown>
 </template>
 <script>
-import VmMarkdownDropdown from './vm-markdown-dropdown.vue'
+import VmMarkdownDropdown from './dropdown.vue'
 export default {
     name: 'VmMarkdownUpload',
     components: {

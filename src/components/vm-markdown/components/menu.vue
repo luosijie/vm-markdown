@@ -49,9 +49,9 @@
 </template>
 
 <script>
-import MenuButton from './MenuButton.vue'
+import MenuButton from './menu-button.vue'
 import dropdown from './dropdown.vue'
-import ToolTable from './ToolTable.vue'
+import ToolTable from './tool-table.vue'
 // import VmMarkdownUpload from './vm-markdown-upload.vue'
 import insertText from '../assets/js/insertText.js'
 export default {

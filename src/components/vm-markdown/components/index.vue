@@ -28,9 +28,7 @@
 import VmMarkdownMenu from './menu.vue'
 import marked from 'marked'
 import theme from '../theme/theme.js'
-import hljs from "highlight.js";
 import insertText from '../assets/js/insertText.js'
-import "highlight.js/styles/github.css";
 export default {
     name: 'VmMarkdown',
     components: {
@@ -147,12 +145,13 @@ export default {
             })
             this.$emit('input', value)
             this.htmlString = marked(value)
-            this.$nextTick(() => {
-                const codes = document.querySelectorAll(".markdown-body pre code");
-                codes.forEach(elem => {
-                    hljs.highlightBlock(elem);
-                });
-            });
+            this.$emit('html-change')
+            // this.$nextTick(() => {
+            //     const codes = document.querySelectorAll(".markdown-body pre code");
+            //     codes.forEach(elem => {
+            //         hljs.highlightBlock(elem);
+            //     });
+            // });
             setTimeout(() => {
                 this.getHtml()
             }, 0)
