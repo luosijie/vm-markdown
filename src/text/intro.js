@@ -5,27 +5,41 @@ npm install --save vm-markdown
 \`\`\`
 ### Usage
 \`\`\`
-import VmMarkdown from 'vm-markdown'
-export default {
-  ...
-  components: {
-  	VmMarkdown
-  },
-  methods: {
-  	showHtml (data) {
-      console.log(data)
+<template>
+  <VmMarkdown
+    :uploadImage="uploadImage"
+    theme="default" //dark, green, gray, princess
+    width="1000px" 
+    height="600px" 
+    @html-change="htmlChange"
+  />
+</template>
+<script>
+  import VmMarkdown from "vm-markdown"
+  import "highlight.js/styles/github.css"
+  import hljs from 'highlight.js'
+  export default {
+    name: "app",
+    components: {
+        VmMarkdown
+    },
+    methods: {
+      htmlChange() {
+        this.$nextTick(() => {
+            const codes = document.querySelectorAll(".markdown-body pre code");
+            codes.forEach(elem => {
+                hljs.highlightBlock(elem);
+            });
+        });
+      },
+      // your method to upolad the file to server and
+      async uploadImage(file) {
+        const imgUrl = await this.uploadRequest(file);
+        return imgUrl
+      }
     }
   }
-  ...
-}
-\`\`\`
-\`\`\`
-<VmMarkdown theme="default" //dark, green, gray, princess
-            width="1000px" 
-            height="600px" 
-            v-on:gethtml="showHtml"
-            :defaultText="intro">
-</VmMarkdown>
+</script>
 \`\`\`
 `
 export default intro
