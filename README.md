@@ -18,9 +18,9 @@ npm install --save vm-markdown
 ```
 ### Usage
 
-```js
+```vue
 <template>
-  <VmMarkdown
+  <vm-markdown
     :uploadImage="uploadImage"
     theme="default" //dark, green, gray, princess
     width="1000px" 
@@ -55,16 +55,6 @@ npm install --save vm-markdown
   }
 </script>
 ```
-
-```vue
-<VmMarkdown theme="default" //dark, green, gray, princess 
-            width="1000px" 
-            height="600px" 
-            v-on:gethtml="showHtml"
-            :defaultText="intro">
-</VmMarkdown>
-```
-
 
 ### License
 
