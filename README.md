@@ -3,6 +3,7 @@
 </p>
 <p align="center">
     <!-- <strong>Markdown for Vue,</strong> <a href="https://luosijie.github.io/vm-markdown/">Live Demo</a> -->
+    <a link="https://luosijie.github.io/vm-markdown/">example</a>
     <strong>refactoring</strong>
 </p>
 <p align="center">
