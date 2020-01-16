@@ -125,10 +125,6 @@ export default {
                     }
                 })
             }
-        },
-        getHtml() {
-            let html = document.querySelector('.vm-markdown-body')
-            this.$emit('gethtml', html.innerHTML)
         }
     },
     watch: {
@@ -153,7 +149,11 @@ export default {
             //     });
             // });
             setTimeout(() => {
-                this.getHtml()
+                let html = document.querySelector('.vm-markdown-body')
+                this.$emit('change', {
+                    html: html.innerHTML,
+                    markdown: this.markdString
+                });
             }, 0)
         },
         value(value) {

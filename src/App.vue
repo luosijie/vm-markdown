@@ -26,8 +26,7 @@
             width="1000px"
             height="800px"
             class="markdown"
-            @html-change="htmlChange"
-            @markdwon-change="showMarkdwon"
+            @change="onChange"
         />
         <div class="author">
             <a href="https://github.com/luosijie/vm-markdown">
@@ -71,8 +70,8 @@ export default {
                 }, 1000)
             })
         },
-        htmlChange(html) {
-            console.log("html-content", html)
+        onChange(data) {
+            console.log("html-content", data)
             this.$nextTick(() => {
                 const codes = document.querySelectorAll(".markdown-body pre code");
                 codes.forEach(elem => {
@@ -80,9 +79,6 @@ export default {
                 });
             });
             // get html string here
-        },
-        showMarkdwon(markdown) {
-            // console.log("markdwon-content", markdown)
         },
         selectTheme(evt) {
             if (evt.target.tagName.toLowerCase() === "span") {
