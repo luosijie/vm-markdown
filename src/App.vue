@@ -71,14 +71,12 @@ export default {
             })
         },
         onChange(data) {
-            console.log("html-content", data)
             this.$nextTick(() => {
                 const codes = document.querySelectorAll(".markdown-body pre code");
                 codes.forEach(elem => {
                     hljs.highlightBlock(elem);
                 });
             });
-            // get html string here
         },
         selectTheme(evt) {
             if (evt.target.tagName.toLowerCase() === "span") {

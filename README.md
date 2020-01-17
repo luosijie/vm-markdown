@@ -25,7 +25,7 @@ npm install --save vm-markdown
     theme="default" //dark, green, gray, princess
     width="1000px" 
     height="600px" 
-    @html-change="htmlChange"
+    @change="onChange"
   />
 </template>
 <script>
@@ -38,7 +38,8 @@ npm install --save vm-markdown
         VmMarkdown
     },
     methods: {
-      htmlChange() {
+      onChange(data) {
+        // data = {html, markdown}
         this.$nextTick(() => {
             const codes = document.querySelectorAll(".markdown-body pre code");
             codes.forEach(elem => {
@@ -46,7 +47,7 @@ npm install --save vm-markdown
             });
         });
       },
-      // your method to upolad the file to server and
+      // your method to upolad the file to server
       async uploadImage(file) {
         const imgUrl = await this.uploadRequest(file);
         return imgUrl
