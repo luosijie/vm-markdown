@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "highlight.js": "^9.13.1",
-        "marked": "^0.6.0"
+        "marked": "^1.1.1"
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
